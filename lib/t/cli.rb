@@ -53,34 +53,9 @@ module T
     method_option 'display-uri', :aliases => '-d', :type => :boolean, :desc => 'Display the authorization URL instead of attempting to open it.'
     def authorize
       @rcfile.path = options['profile'] if options['profile']
-      if @rcfile.empty?
-        say "Welcome! Before you can use t, you'll first need to register an"
-        say 'application with Twitter. Just follow the steps below:'
-        say '  1. Sign in to the Twitter Application Management site and click'
-        say '     "Create New App".'
-        say '  2. Complete the required fields and submit the form.'
-        say '     Note: Your application must have a unique name.'
-        say '  3. Go to the Permissions tab of your application, and change the'
-        say '     Access setting to "Read, Write and Access direct messages".'
-        say '  4. Go to the API Keys tab to view the consumer key and secret,'
-        say "     which you'll need to copy and paste below when prompted."
-        say
-        ask 'Press [Enter] to open the Twitter Developer site.'
-        say
-      else
-        say "It looks like you've already registered an application with Twitter."
-        say 'To authorize a new account, just follow the steps below:'
-        say '  1. Sign in to the Twitter Developer site.'
-        say "  2. Select the application for which you'd like to authorize an account."
-        say '  3. Copy and paste the consumer key and secret below when prompted.'
-        say
-        ask 'Press [Enter] to open the Twitter Developer site.'
-        say
-      end
       require 'launchy'
-      open_or_print('https://apps.twitter.com', :dry_run => options['display-uri'])
-      key = ask 'Enter your API key:'
-      secret = ask 'Enter your API secret:'
+      key = xxx
+      secret = xyxyxy
       consumer = OAuth::Consumer.new(key, secret, :site => Twitter::REST::Client::ENDPOINT)
       request_token = consumer.get_request_token
       uri = generate_authorize_uri(consumer, request_token)
